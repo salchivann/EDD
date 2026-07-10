@@ -1,18 +1,6 @@
 from datetime import datetime
 
-
 class Turno:
-    """
-    TAD (Tipo Abstracto de Datos) Turno.
-
-    Representa un ticket de atención dentro del sistema. Encapsula los
-    datos esenciales (código, tipo, estado, tiempos) y expone únicamente
-    operaciones controladas sobre ese estado (marcar_atendido,
-    marcar_cancelado), ocultando al resto del sistema los detalles de
-    su representación interna. Esto es lo que lo convierte en un TAD y
-    no en una simple estructura de datos "plana".
-    """
-
     ESTADOS_VALIDOS = ("En espera", "Atendido", "Cancelado")
 
     def __init__(self, codigo, tipo, prioridad=0):

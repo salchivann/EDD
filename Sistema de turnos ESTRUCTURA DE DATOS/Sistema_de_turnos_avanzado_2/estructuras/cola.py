@@ -1,3 +1,4 @@
+# Clase que representa un nodo de la cola. Cada nodo almacena un dato y la referencia al siguiente.
 class _NodoCola:
     __slots__ = ("dato", "siguiente")
 
@@ -5,6 +6,7 @@ class _NodoCola:
         self.dato = dato
         self.siguiente = None
 
+# Cola (FIFO). El primer elemento que entra es el primero en salir.
 class Cola:
 
     def __init__(self):
@@ -12,6 +14,8 @@ class Cola:
         self._final = None
         self._tamano = 0
 
+
+    # Agrega un nuevo elemento al final de la cola.
     def encolar(self, dato):
         nuevo = _NodoCola(dato)
         if self._final is None:
@@ -22,6 +26,8 @@ class Cola:
             self._final = nuevo
         self._tamano += 1
 
+
+    # Elimina y devuelve el elemento que se encuentra al frente de la cola.
     def desencolar(self):
         if self.esta_vacia():
             return None
@@ -31,16 +37,22 @@ class Cola:
             self._final = None
         self._tamano -= 1
         return nodo.dato
-
+    
+    # Devuelve el primer elemento sin eliminarlo.
     def ver_frente(self):
         return self._frente.dato if self._frente else None
-
+    
+    # Verifica si la cola está vacía.
     def esta_vacia(self):
         return self._frente is None
 
+
+    # Devuelve la cantidad de elementos almacenados.
     def tamano(self):
         return self._tamano
 
+
+    # Recorre la cola y devuelve todos los elementos en orden.
     def recorrer(self):
         resultado = []
         actual = self._frente
@@ -49,6 +61,8 @@ class Cola:
             actual = actual.siguiente
         return resultado
 
+
+    # Elimina un elemento que cumpla una condición específica y actualiza los enlaces de la cola.
     def eliminar(self, condicion):
 
         anterior = None
